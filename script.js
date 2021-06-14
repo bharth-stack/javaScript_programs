@@ -1,46 +1,37 @@
+/*
+Steven is still building his tip calculator, using the same rules as before: Tip 15% of the bill if the bill value is between 50 and 300, and if the value is different, the tip is 20%.
 
-// Each team competes 3 times, and then the average of the 3 scores is calculated (so one average score per team).
-// A team ONLY wins if it has at least DOUBLE the average score of the other team. Otherwise, no team wins!
+1. Write a function 'calcTip' that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out the code from first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100.
+2. And now let's use arrays! So create an array 'bills' containing the test data below.
+3. Create an array 'tips' containing the tip value for each bill, calculated from the function you created before.
+4. BONUS: Create an array 'total' containing the total values, so the bill + tip.
 
-// 1. Create an arrow function 'calcAverage' to calculate the average of 3 scores
-// 2. Use the function to calculate the average for both teams
-// 3. Create a function 'checkWinner' that takes the average score of each team as parameters ('avgDolhins' and 'avgKoalas'), and then logs the winner to the console, together with the victory points, according to the rule above. Example: "Koalas win (30 vs. 13)".
-// 4. Use the 'checkWinner' function to determine the winner for both DATA 1 and DATA 2.
-// 5. Ignore draws this time.
+TEST DATA: 125, 555 and 44 */
 
-// TEST DATA 1: Dolphins score 44, 23 and 71. Koalas score 65, 54 and 49
-// TEST DATA 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 27
-
-
-const avgScore=(one,two,three)=>(one+two+three)/3;
-const winner=function(team_1,team_2)
-{
-    console.log(team_1,team_2);
-
-    if(team_1>team_2){
-        const avg=team_2+team_2;
-        if(team_1>avg){
-          console.log(`dolphins has double Avg ${team_1} and they own the match  🎉🎊` );
-      }
-      else{
-          console.log(`noe of them own the atch 🎭`);
-      }
-
-    }
-    else if(team_1<team_2){
-
-        const avg_2=team_1+team_1;
-        if(team_2>avg_2){
-          console.log(`kolas has double Avg ${team_2} and they own the match 🎉🎊`);
-      }
-      else{
-          console.log(`noe of them own the atch🎭`);
-      }
-
-
+function tip(bill, tip, total) {
+    var discount = 0;
+    let i = 0;
+    while (bill.length != i) {
+        bill[i] <= 300 && bill[i] > 50 ? discount = 15 : discount = 20;
+        tip[i] = (bill[i] / 100) * discount;
+        total[i] = bill[i] + tip[i];
+        i++;
     }
 }
-const dolphinsAvg=avgScore(85,54,41);
-const kolasAvg=avgScore(23,34,27);
+let bills = new Array();
+let tips = new Array();
+let totalAmount = new Array();
+let count = prompt("count");
+let i = 0;
+while (i != count) {
+    bills[i] = parseInt(prompt(`bill ${i}`));
+    i++;
+}
+tip(bills, tips, totalAmount);
+i = 0;
+while (i != bills.length) {
+    console.log(bills[i], tips[i], totalAmount[i]);
+    i++;
 
-const victory =winner(dolphinsAvg,kolasAvg);
+}
+
