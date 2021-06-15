@@ -1,37 +1,38 @@
-/*
-Steven is still building his tip calculator, using the same rules as before: Tip 15% of the bill if the bill value is between 50 and 300, and if the value is different, the tip is 20%.
 
-1. Write a function 'calcTip' that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out the code from first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100.
-2. And now let's use arrays! So create an array 'bills' containing the test data below.
-3. Create an array 'tips' containing the tip value for each bill, calculated from the function you created before.
-4. BONUS: Create an array 'total' containing the total values, so the bill + tip.
 
-TEST DATA: 125, 555 and 44 */
+// 1. For each of them, create an object with properties for their full name, mass, and height (Mark Miller and John Smith)
+// 2. Create a 'calcBMI' method on each object to calculate the BMI (the same method on both objects). Store the BMI value to a property, and also return it from the method.
+// 3. Log to the console who has the higher BMI, together with the full name and the respective BMI. Example: "John Smith's BMI (28.3) is higher than Mark Miller's (23.9)!"
 
-function tip(bill, tip, total) {
-    var discount = 0;
-    let i = 0;
-    while (bill.length != i) {
-        bill[i] <= 300 && bill[i] > 50 ? discount = 15 : discount = 20;
-        tip[i] = (bill[i] / 100) * discount;
-        total[i] = bill[i] + tip[i];
-        i++;
+// TEST DATA: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
+
+ const mark={
+firstName: prompt("first name"),
+lastName:prompt("last name"),
+mass:parseFloat(prompt("mass")),
+height:parseFloat(prompt("height")),
+bmi:function(){ 
+    return (this.mass)/(this.height*this.height);
+}
+ };
+
+ const john={
+    firstName: prompt("first name"),
+    lastName:prompt("last name"),
+    mass: parseFloat(prompt("mass")),
+    height:parseFloat(prompt("height")),
+    bmi:function(){
+        return (this.mass)/(this.height*2);
     }
-}
-let bills = new Array();
-let tips = new Array();
-let totalAmount = new Array();
-let count = prompt("count");
-let i = 0;
-while (i != count) {
-    bills[i] = parseInt(prompt(`bill ${i}`));
-    i++;
-}
-tip(bills, tips, totalAmount);
-i = 0;
-while (i != bills.length) {
-    console.log(bills[i], tips[i], totalAmount[i]);
-    i++;
+     };
 
-}
+     const bmi_1=mark.bmi();
+     const bmi_2=john.bmi();
+     if(bmi_1>bmi_2){
+         console.log(`${mark.firstName} ${mark.lastName}'s BMI (${bmi_1}) is higher than ${john.firstName}'s (${bmi_2}) `);
+     }
+     else{
+        console.log(`${john.firstName} ${john.lastName}'s BMI (${bmi_2}) is higher than ${mark.firstName}'s (${bmi_1}) `);
+     }
+
 
